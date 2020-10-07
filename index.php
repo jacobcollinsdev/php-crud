@@ -10,9 +10,23 @@
     <title>PHP CRUD</title>
 </head>
 <body>
-    <form action="" method="post">
-        <input type="text" name="name" value="Enter Your Name">
-        <input type="text" name="location" value="Enter Your Location">
-    </form>
+    <h1>PHP CRUD</h1>
+
+    <div class="row justify-content-center">
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input class="form-control" type="text" name="name" id="name" value="Enter Your Name">
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input class="form-control" type="text" name="location" id="location" value="Enter Your Location">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit" name="save">Save</button>
+            </div>
+        </form>
+    </div>
+
 </body>
 </html>
