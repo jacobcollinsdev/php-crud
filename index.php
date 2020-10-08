@@ -16,7 +16,7 @@
             // CONNECT TO DATABASE
             $db = new mysqli('localhost', 'root', 'cuvxus', 'crud') or die("Connection failed: ".$db->connect_error);
             // SELECT EXISTING RECORDS
-            $result = $db->query("SELECT * FROM data") or die($db->connect_error);
+            $result = $db->query("SELECT * FROM data") or die($db->error());
             // pre_r($result->fetch_assoc());
         ?>
 
