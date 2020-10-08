@@ -3,6 +3,10 @@
     //CREATE CONNECTION TO DATABASE OR THROW ERROR IF CONNECTION FAILED
     $db = new mysqli('localhost', 'root', 'cuvxus', 'crud') or die("Connection failed: ".$db->connect_error);
 
+    $name = '';
+    $location = '';
+    $update = false;
+
     //CHECK IF SAVE BUTTON HAS BEEN CLICKED
     if(isset($_POST['save'])){
         $name = $_POST['name'];
@@ -29,6 +33,19 @@
         $_SESSION['msg_type'] = 'danger';
 
         header("location: index.php");
+    }
+
+    // CHECK IF EDIT BUTTON HAS BEEN CLICKED
+    if(isset($_GET['edit'])){
+        $id = $_GET['edit'];
+        $update = true;
+        $result = $db->query("SELECT * FROM data WHERE id=$id") or die($db->error());
+        // CHECK IF RECORD EXISTS
+        if ($result->num_rows){
+            $row = $result->fetch_array();
+            $name = $row['name'];
+            $location = $row['location'];
+        }
     }
 
 
