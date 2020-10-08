@@ -10,26 +10,62 @@
     <title>PHP CRUD</title>
 </head>
 <body>
-    <?php 
-        require_once('process.php');
-    ?>
-    <h1 class="text-center">PHP CRUD</h1>
+    <?php require_once('process.php');?>
+    <div class="container">
+        <?php
+            // CONNECT TO DATABASE
+            $db = new mysqli('localhost', 'root', 'cuvxus', 'crud') or die("Connection failed: ".$db->connect_error);
+            // SELECT EXISTING RECORDS
+            $result = $db->query("SELECT * FROM data") or die($db->connect_error);
+            // pre_r($result->fetch_assoc());
+        ?>
 
-    <div class="row justify-content-center">
-        <form action="process.php" method="post">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input class="form-control" type="text" name="name" id="name" value="Enter Your Name">
-            </div>
-            <div class="form-group">
-                <label for="location">Location:</label>
-                <input class="form-control" type="text" name="location" id="location" value="Enter Your Location">
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary" type="submit" name="save">Save</button>
-            </div>
-        </form>
+        <div class="row justify-content-center">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                </thead>
+            <?php
+                // LOOP THROUGH RECORDS AND DISPLAY THEM IN THE TABLE
+                while($row = $result->fetch_assoc()): 
+            ?>
+                <tr>
+                    <td><?php echo $row['name']; ?></td>
+                    <td><?php echo $row['location']; ?></td>
+                    <td></td>
+                </tr>
+            <?php endwhile; ?>
+
+            </table>
+        </div>
+
+        <?php
+                function pre_r($array){
+                echo '<pre>';
+                print_r($array);
+                echo '</pre>';
+            }
+        ?>
+
+        <div class="row justify-content-center">
+            <form action="process.php" method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input class="form-control" type="text" name="name" id="name" value="Enter Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="location">Location:</label>
+                    <input class="form-control" type="text" name="location" id="location" value="Enter Your Location">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit" name="save">Save</button>
+                </div>
+            </form>
+        </div>
     </div>
-
 </body>
 </html>
