@@ -36,7 +36,12 @@
                 <tr>
                     <td><?php echo $row['name']; ?></td>
                     <td><?php echo $row['location']; ?></td>
-                    <td></td>
+                    <td>
+                        <!-- LINK TO INDEX.PHP FILE AND PASS EDIT AS A VARIABLE -->
+                        <a href="index.php?edit=<?php echo $row['id']; ?>" class="btn btn-info">Edit</a>
+                        <!-- LINK TO PROCESS.PHP FILE AND PASS DELETE AS A VARIABLE -->
+                        <a href="process.php?delete=<?php echo $row['id']; ?>" class="btn btn-danger">Delete</a>
+                    </td>
                 </tr>
             <?php endwhile; ?>
 
