@@ -5,6 +5,7 @@
 
     $name = '';
     $location = '';
+    $id = 0;
     $update = false;
 
     //CHECK IF SAVE BUTTON HAS BEEN CLICKED
@@ -46,6 +47,20 @@
             $name = $row['name'];
             $location = $row['location'];
         }
+    }
+
+    // CHECK IF THE UPDATE BUTTON HAS BEEN CLICKED
+    if(isset($_POST['update'])){
+        $id = $_POST['id'];
+        $name = $_POST['name'];
+        $location = $_POST['location'];
+
+        $db->query("UPDATE data SET name='$name', location='$location' WHERE id='$id'") or die($db->error());
+
+        $_SESSION['message'] = 'Record has been updated!';
+        $_SESSION['msg_type'] = 'warning';
+
+        header("location: index.php");
     }
 
 

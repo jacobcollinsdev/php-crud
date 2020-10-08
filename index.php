@@ -18,10 +18,10 @@
 
     <div class="alert alert-<?=$_SESSION['msg_type']?>">
     
-        <?php
-            echo $_SESSION['message'];
-            unset($_SESSION['message']);
-        ?>
+    <?php
+        echo $_SESSION['message'];
+        unset($_SESSION['message']);
+    ?>
     </div>
     <?php endif ?>
 
@@ -74,6 +74,7 @@
 
         <div class="row justify-content-center">
             <form action="process.php" method="post">
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input class="form-control" type="text" name="name" id="name" value="<?php echo $name; ?>" placeholder="Enter Your Name">
