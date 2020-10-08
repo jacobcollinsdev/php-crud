@@ -10,10 +10,13 @@
     <title>PHP CRUD</title>
 </head>
 <body>
-    <h1>PHP CRUD</h1>
+    <?php 
+        require_once('process.php');
+    ?>
+    <h1 class="text-center">PHP CRUD</h1>
 
     <div class="row justify-content-center">
-        <form action="" method="post">
+        <form action="process.php" method="post">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input class="form-control" type="text" name="name" id="name" value="Enter Your Name">
